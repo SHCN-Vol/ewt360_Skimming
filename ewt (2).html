@@ -1,0 +1,415 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>ewt (2).md</title>
+<meta http-equiv="Content-type" content="text/html;charset=UTF-8">
+
+<style>
+/* https://github.com/microsoft/vscode/blob/master/extensions/markdown-language-features/media/markdown.css */
+/*---------------------------------------------------------------------------------------------
+ *  Copyright (c) Microsoft Corporation. All rights reserved.
+ *  Licensed under the MIT License. See License.txt in the project root for license information.
+ *--------------------------------------------------------------------------------------------*/
+
+body {
+	font-family: var(--vscode-markdown-font-family, -apple-system, BlinkMacSystemFont, "Segoe WPC", "Segoe UI", "Ubuntu", "Droid Sans", sans-serif);
+	font-size: var(--vscode-markdown-font-size, 14px);
+	padding: 0 26px;
+	line-height: var(--vscode-markdown-line-height, 22px);
+	word-wrap: break-word;
+}
+
+#code-csp-warning {
+	position: fixed;
+	top: 0;
+	right: 0;
+	color: white;
+	margin: 16px;
+	text-align: center;
+	font-size: 12px;
+	font-family: sans-serif;
+	background-color:#444444;
+	cursor: pointer;
+	padding: 6px;
+	box-shadow: 1px 1px 1px rgba(0,0,0,.25);
+}
+
+#code-csp-warning:hover {
+	text-decoration: none;
+	background-color:#007acc;
+	box-shadow: 2px 2px 2px rgba(0,0,0,.25);
+}
+
+body.scrollBeyondLastLine {
+	margin-bottom: calc(100vh - 22px);
+}
+
+body.showEditorSelection .code-line {
+	position: relative;
+}
+
+body.showEditorSelection .code-active-line:before,
+body.showEditorSelection .code-line:hover:before {
+	content: "";
+	display: block;
+	position: absolute;
+	top: 0;
+	left: -12px;
+	height: 100%;
+}
+
+body.showEditorSelection li.code-active-line:before,
+body.showEditorSelection li.code-line:hover:before {
+	left: -30px;
+}
+
+.vscode-light.showEditorSelection .code-active-line:before {
+	border-left: 3px solid rgba(0, 0, 0, 0.15);
+}
+
+.vscode-light.showEditorSelection .code-line:hover:before {
+	border-left: 3px solid rgba(0, 0, 0, 0.40);
+}
+
+.vscode-light.showEditorSelection .code-line .code-line:hover:before {
+	border-left: none;
+}
+
+.vscode-dark.showEditorSelection .code-active-line:before {
+	border-left: 3px solid rgba(255, 255, 255, 0.4);
+}
+
+.vscode-dark.showEditorSelection .code-line:hover:before {
+	border-left: 3px solid rgba(255, 255, 255, 0.60);
+}
+
+.vscode-dark.showEditorSelection .code-line .code-line:hover:before {
+	border-left: none;
+}
+
+.vscode-high-contrast.showEditorSelection .code-active-line:before {
+	border-left: 3px solid rgba(255, 160, 0, 0.7);
+}
+
+.vscode-high-contrast.showEditorSelection .code-line:hover:before {
+	border-left: 3px solid rgba(255, 160, 0, 1);
+}
+
+.vscode-high-contrast.showEditorSelection .code-line .code-line:hover:before {
+	border-left: none;
+}
+
+img {
+	max-width: 100%;
+	max-height: 100%;
+}
+
+a {
+	text-decoration: none;
+}
+
+a:hover {
+	text-decoration: underline;
+}
+
+a:focus,
+input:focus,
+select:focus,
+textarea:focus {
+	outline: 1px solid -webkit-focus-ring-color;
+	outline-offset: -1px;
+}
+
+hr {
+	border: 0;
+	height: 2px;
+	border-bottom: 2px solid;
+}
+
+h1 {
+	padding-bottom: 0.3em;
+	line-height: 1.2;
+	border-bottom-width: 1px;
+	border-bottom-style: solid;
+}
+
+h1, h2, h3 {
+	font-weight: normal;
+}
+
+table {
+	border-collapse: collapse;
+}
+
+table > thead > tr > th {
+	text-align: left;
+	border-bottom: 1px solid;
+}
+
+table > thead > tr > th,
+table > thead > tr > td,
+table > tbody > tr > th,
+table > tbody > tr > td {
+	padding: 5px 10px;
+}
+
+table > tbody > tr + tr > td {
+	border-top: 1px solid;
+}
+
+blockquote {
+	margin: 0 7px 0 5px;
+	padding: 0 16px 0 10px;
+	border-left-width: 5px;
+	border-left-style: solid;
+}
+
+code {
+	font-family: Menlo, Monaco, Consolas, "Droid Sans Mono", "Courier New", monospace, "Droid Sans Fallback";
+	font-size: 1em;
+	line-height: 1.357em;
+}
+
+body.wordWrap pre {
+	white-space: pre-wrap;
+}
+
+pre:not(.hljs),
+pre.hljs code > div {
+	padding: 16px;
+	border-radius: 3px;
+	overflow: auto;
+}
+
+pre code {
+	color: var(--vscode-editor-foreground);
+	tab-size: 4;
+}
+
+/** Theming */
+
+.vscode-light pre {
+	background-color: rgba(220, 220, 220, 0.4);
+}
+
+.vscode-dark pre {
+	background-color: rgba(10, 10, 10, 0.4);
+}
+
+.vscode-high-contrast pre {
+	background-color: rgb(0, 0, 0);
+}
+
+.vscode-high-contrast h1 {
+	border-color: rgb(0, 0, 0);
+}
+
+.vscode-light table > thead > tr > th {
+	border-color: rgba(0, 0, 0, 0.69);
+}
+
+.vscode-dark table > thead > tr > th {
+	border-color: rgba(255, 255, 255, 0.69);
+}
+
+.vscode-light h1,
+.vscode-light hr,
+.vscode-light table > tbody > tr + tr > td {
+	border-color: rgba(0, 0, 0, 0.18);
+}
+
+.vscode-dark h1,
+.vscode-dark hr,
+.vscode-dark table > tbody > tr + tr > td {
+	border-color: rgba(255, 255, 255, 0.18);
+}
+
+</style>
+
+<style>
+/* Tomorrow Theme */
+/* http://jmblog.github.com/color-themes-for-google-code-highlightjs */
+/* Original theme - https://github.com/chriskempson/tomorrow-theme */
+
+/* Tomorrow Comment */
+.hljs-comment,
+.hljs-quote {
+	color: #8e908c;
+}
+
+/* Tomorrow Red */
+.hljs-variable,
+.hljs-template-variable,
+.hljs-tag,
+.hljs-name,
+.hljs-selector-id,
+.hljs-selector-class,
+.hljs-regexp,
+.hljs-deletion {
+	color: #c82829;
+}
+
+/* Tomorrow Orange */
+.hljs-number,
+.hljs-built_in,
+.hljs-builtin-name,
+.hljs-literal,
+.hljs-type,
+.hljs-params,
+.hljs-meta,
+.hljs-link {
+	color: #f5871f;
+}
+
+/* Tomorrow Yellow */
+.hljs-attribute {
+	color: #eab700;
+}
+
+/* Tomorrow Green */
+.hljs-string,
+.hljs-symbol,
+.hljs-bullet,
+.hljs-addition {
+	color: #718c00;
+}
+
+/* Tomorrow Blue */
+.hljs-title,
+.hljs-section {
+	color: #4271ae;
+}
+
+/* Tomorrow Purple */
+.hljs-keyword,
+.hljs-selector-tag {
+	color: #8959a8;
+}
+
+.hljs {
+	display: block;
+	overflow-x: auto;
+	color: #4d4d4c;
+	padding: 0.5em;
+}
+
+.hljs-emphasis {
+	font-style: italic;
+}
+
+.hljs-strong {
+	font-weight: bold;
+}
+</style>
+
+<style>
+/*
+ * Markdown PDF CSS
+ */
+
+ body {
+	font-family: -apple-system, BlinkMacSystemFont, "Segoe WPC", "Segoe UI", "Ubuntu", "Droid Sans", sans-serif, "Meiryo";
+	padding: 0 12px;
+}
+
+pre {
+	background-color: #f8f8f8;
+	border: 1px solid #cccccc;
+	border-radius: 3px;
+	overflow-x: auto;
+	white-space: pre-wrap;
+	overflow-wrap: break-word;
+}
+
+pre:not(.hljs) {
+	padding: 23px;
+	line-height: 19px;
+}
+
+blockquote {
+	background: rgba(127, 127, 127, 0.1);
+	border-color: rgba(0, 122, 204, 0.5);
+}
+
+.emoji {
+	height: 1.4em;
+}
+
+code {
+	font-size: 14px;
+	line-height: 19px;
+}
+
+/* for inline code */
+:not(pre):not(.hljs) > code {
+	color: #C9AE75; /* Change the old color so it seems less like an error */
+	font-size: inherit;
+}
+
+/* Page Break : use <div class="page"/> to insert page break
+-------------------------------------------------------- */
+.page {
+	page-break-after: always;
+}
+
+</style>
+
+<script src="https://unpkg.com/mermaid/dist/mermaid.min.js"></script>
+</head>
+<body>
+  <script>
+    mermaid.initialize({
+      startOnLoad: true,
+      theme: document.body.classList.contains('vscode-dark') || document.body.classList.contains('vscode-high-contrast')
+          ? 'dark'
+          : 'default'
+    });
+  </script>
+<h1 id="%E5%8D%87%E5%AD%A6e%E7%BD%91%E9%80%9A%E5%88%B7%E7%BD%91%E8%AF%BE%E5%8F%AF%E8%A1%8C%E6%80%A7%E7%8C%9C%E6%83%B3%E4%B8%8E%E5%AE%9E%E8%B7%B5"><strong>升学e网通刷网课可行性猜想与实践</strong></h1>
+<h2 id="%E7%AC%AC%E4%B8%80%E6%AD%A5%E7%A1%AE%E5%AE%9A%E8%AE%BE%E5%A4%87">第一步：确定设备</h2>
+<p>请使用<strong>具有扩展功能的</strong>浏览器访问<code>https://www.ewt360.com</code></p>
+<blockquote>
+<p>[!IMPORTANT]<br>推荐使用<strong>电脑</strong>进行观看，手机请使用<code>狐猴浏览器、edge浏览器</code>进行观看<br>电脑用户<strong>请勿使用</strong><code>Internet Explorer</code>和<code>Safari浏览器</code><br>手机用户<strong>请勿使用</strong><code>未具有拓展功能的国产浏览器</code>及<code>Safari浏览器</code></p>
+</blockquote>
+<h2 id="%E7%AC%AC%E4%BA%8C%E6%AD%A5%E5%AE%89%E8%A3%85%E6%8F%92%E4%BB%B6">第二步：安装插件</h2>
+<h3 id="1%E6%89%93%E5%BC%80%E6%8F%92%E4%BB%B6%E5%B8%82%E5%9C%BA">1.打开插件市场</h3>
+<blockquote>
+<p>[!TIP]<br>本教程以<strong>Microsoft Windows11 26H1</strong>安装的<strong>Edge浏览器</strong>为例，其他情况请自主判断</p>
+</blockquote>
+<p>访问<code>https://microsoftedge.microsoft.com/addons/Microsoft-Edge-Extensions-Home</code>进入<code>Microsoft Edge Add-ons</code>
+<img src="addon.png" alt="Microsoft Edge Add-ons"></p>
+<h3 id="2%E6%90%9C%E7%B4%A2%E6%8F%92%E4%BB%B6">2.搜索插件</h3>
+<p>在右上角的搜索栏中键入<code>Global Speed</code>并回车，随后会出现相关结果（通常为第一个）
+<img src="gb.png" alt="Global Speed"></p>
+<h3 id="3%E4%B8%8B%E8%BD%BD%E6%8F%92%E4%BB%B6">3.下载插件</h3>
+<p>点击结果会跳转到详情页，请点击右上角的<code>获取</code>按钮进行安装，<strong>若浏览器弹出询问弹窗，请一律点<code>允许</code></strong>
+<img src="get.png" alt="gbget"></p>
+<h2 id="%E7%AC%AC%E4%B8%89%E6%AD%A5%E5%BC%80%E5%A7%8B%E5%88%B7%E8%AF%BE">第三步：开始刷课</h2>
+<p><strong>1. 访问<code>https://www.ewt360.com</code></strong>
+<img src="ewt.png" alt="sbewt"></p>
+<p><strong>2. 点击<code>我的任务</code>，进入任务列表</strong>
+<img src="task.png" alt="task"></p>
+<p><strong>3. 选择你要刷的任务，进入课程选择页</strong>
+<img src="choose.png" alt="choose"></p>
+<p><strong>4. 点击<code>学</code>进入视频播放页</strong>
+<img src="video.png" alt="video"></p>
+<p><strong>5. 点击右上角 <em>三个点</em> 展开二级菜单</strong>（本步骤可以省去，直接跳转至<strong>步骤7</strong>）
+<img src="next.png" alt="next"></p>
+<p><strong>6. 点击<code>扩展</code>，展开菜单</strong>（本步骤可以省去，直接跳转至<strong>步骤7</strong>）
+<img src="addon0.png" alt="addon0"></p>
+<p><strong>7. 点击<code>管理扩展</code>，打开管理，确认本插件为打开状态后回到视频播放页</strong>（本步骤可以省去，直接跳转至<strong>步骤7</strong>）
+<img src="addon1.png" alt="addon1"></p>
+<p><strong>8. 点击右上角<code>拼图图标</code>，进入扩展列表</strong>
+<img src="addon2.png" alt="addon2"></p>
+<p><strong>9. 点击<code>Global Speed</code>，弹出设置浮窗，选择你希望的倍数</strong>
+<img src="addon3.png" alt="addon3"></p>
+<blockquote>
+<p>[!IMPORTANT]<br>请不要选择<code>大于2x的</code>速率，否则会<strong>禁止上课</strong>
+<img src="video1.png" alt="video1"></p>
+</blockquote>
+<blockquote>
+<p>[!WARNING]<br><strong>免责声明</strong><br>1. <strong>内容性质说明</strong><br>本文《升学e网通刷网课可行性猜想》仅为<strong>技术原理探讨与理论猜想</strong>，全部内容仅供学习交流、技术研究使用，不构成任何实际操作建议，亦无教唆、诱导他人实施违规操作的意图。<br>2. <strong>平台规则与合规风险</strong><br>升学e网通（<code>https://www.ewt360.com</code>）的课程服务受平台《用户服务协议》、运营规则及《中华人民共和国著作权法》等相关法律法规约束。使用第三方插件加速播放、违规刷课等行为可能违反平台规则，存在账号封禁、学习记录作废、服务权限终止等风险，所有风险与法律后果均由实际操作者自行承担。<br>3. <strong>第三方工具免责</strong><br>文中提及的浏览器、<code>Global Speed</code> 插件及相关第三方工具仅为技术示例，本文不对其安全性、稳定性、合规性及使用效果作出任何明示或默示的担保。因安装、使用上述第三方工具导致的设备故障、数据丢失、隐私泄露、账号异常等任何问题，本文作者不承担任何法律责任与赔偿责任。<br>4. <strong>知识产权提示</strong><br>平台内所有课程、图文、音频等内容均受知识产权保护，任何人不得通过违规手段批量获取、传播或用于非学习用途。因违规使用内容引发的侵权责任，由行为人自行全部承担。<br>5. <strong>责任界定</strong><br>任何基于本文内容实施的实际操作，均视为操作者自主判断、自主决策的行为。由此产生的一切直接、间接损失或法律后果，均由操作者自行承担，本文作者不承担任何责任。<br>6. <strong>规则更新提示</strong><br>若平台运营规则、相关法律法规发生更新或调整，以官方最新规则及现行有效法律规定为准。</p>
+</blockquote>
+
+</body>
+</html>
