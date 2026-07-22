@@ -9,13 +9,13 @@
 ### 1.打开插件市场
 > [!TIP]<br>本教程以**Microsoft Windows11 26H1**安装的**Edge浏览器**为例，其他情况请自主判断
 
-访问`https://microsoftedge.microsoft.com/addons/Microsoft-Edge-Extensions-Home`进入`Microsoft Edge Add-ons`*<br>
+访问`https://microsoftedge.microsoft.com/addons/Microsoft-Edge-Extensions-Home`进入`Microsoft Edge Add-ons`<br>
 ![Microsoft Edge Add-ons](addon.png)
 ### 2.搜索插件
-在右上角的搜索栏中键入`Global Speed`并回车，随后会出现相关结果（通常为第一个）*<br>
+在右上角的搜索栏中键入`Global Speed`并回车，随后会出现相关结果（通常为第一个）<br>
 ![Global Speed](gb.png)
 ### 3.下载插件
-点击结果会跳转到详情页，请点击右上角的`获取`按钮进行安装，**若浏览器弹出询问弹窗，请一律点`允许`***<br>
+点击结果会跳转到详情页，请点击右上角的`获取`按钮进行安装，**若浏览器弹出询问弹窗，请一律点`允许`**<br>
 ![gbget](get.png)
 
 ## 第三步：开始刷课
